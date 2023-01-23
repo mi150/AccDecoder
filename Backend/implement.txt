@@ -1,0 +1,21 @@
+huanjingxia :conda acativate dds
+ddsrepo下：
+FLASK_APP=backend/backend.py flask run --port=5001
+ copy the frozen_inference_graph.pb to DDSrepo to help the server find the model.
+
+另一终端mode to implementation  hname to ip:5001   hname: 127.0.0.1:5001   mode: implementation
+ cd to DDSrepo/workspace
+run DDS on implementation mode
+
+server:
+cd /home/sun/workplace/dds-clean
+conda activate dds2
+FLASK_APP=backend/backend.py flask run --port=5001
+
+client:
+cd workspace
+conda activate dds2
+python entrance.py
+
+
+

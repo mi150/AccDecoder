@@ -1,0 +1,17 @@
+name: dds
+channels:
+  - anaconda
+  - defaults
+dependencies:
+  - python=3.7.7
+  - tensorflow-gpu=1.14
+  - flask
+  - munch
+  - networkx
+  - pyyaml
+  - requests
+  - pip
+  - pip:
+    - opencv-contrib-python
+ 
+
