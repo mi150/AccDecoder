@@ -128,22 +128,16 @@ if __name__ == "__main__":
     with open("features.txt", "rb") as get_myprofile:
         features = pickle.load(get_myprofile)
     d_pro = diff_processor.DiffProcessor.str2class('edge')(0)
-    # res=d_pro.get_res_diff_vector('D:\\video\\v_t\\p_res\\')
+    
     with open("res.txt", "rb") as get_myprofile:
         res = pickle.load(get_myprofile)
         # print('ok')
     # print(res)
     states, diff_gop = d_pro.get_all_diff_vector(
-        "D:\\shiyan\\server\\server\\my_dds_sr_619\\dataset\\video_test\\src\\video_test.mp4", 30)
+        "video_test.mp4", 30)
 
     # parallel training
-    # workers = [Worker(gnet, opt, global_ep, global_ep_r, res_queue, i,Envs(720, 1280, 2000, "D:\\shiyan\\server\\server\\my_dds_sr_619\\dataset\\video_test\\src\\video_test.mp4",times,result)) for i in range(2)]
-    # workers = [Worker(gnet, opt, global_ep, global_ep_r, res_queue, i, Envs2mv(720, 1280, 2000,
-    #                                                                          states,diff_gop,
-    #                                                                          times, result.regions_dict,features)) for i in range(1)]
-    # workers = [Worker(gnet, opt, global_ep, global_ep_r, res_queue, i, Envs1(720, 1280, 2000,
-    #                                                                         states,diff_gop,
-    #                                                                         times, result)) for i in range(20)]
+
     workers = [Worker(gnet, opt, global_ep, global_ep_r, res_queue, i, Envs3(720, 1280, 2000,
                                                                              states, diff_gop,
                                                                              times, result.regions_dict,
@@ -162,7 +156,7 @@ if __name__ == "__main__":
     [w.join() for w in workers]
     end = T.time()
     print('t', (end - start))
-    torch.save(gnet, "D:\\shiyan\\server\\server\\my_dds_sr_619\\DRL_con\\edge_con1.pth")
+    torch.save(gnet, "edge_con1.pth")
     import matplotlib
 
     matplotlib.use('TkAgg')
